@@ -307,7 +307,7 @@ function setWall(x, y, d, type) {
 window.applyMapSize = function() {
     const w = parseInt(document.getElementById('mapWidthInput').value, 10);
     const h = parseInt(document.getElementById('mapHeightInput').value, 10);
-    if(isNaN(w) || iSNan(h) || w < 5 || h < 5) {
+    if(isNaN(w) || isNaN(h) || w < 5 || h < 5) {
         alert("無効なサイズです。5以上の数値を入力してください。");
         return;
     }
