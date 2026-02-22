@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>EXPERT MAPPER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="text-shadow: 0 0 10px #0f0;">--- EXPERT MAPPER ---</h1>
+
+    <div class="main-container">
+        <div>
+            <div class="status">
+                <div id="pos">POS: X00, Y19 | DIR: NORTH</div>
+                <div id="hoverPos" style="color: #888;">CURSOR: -</div>
+                <div id="memoDisplay" style="color: #0ff;">FRONT: -</div>
+            </div>
+
+            <div style="margin-bottom: 5px; display:flex; gap:10px; align-items: center;">
+                <label>SIZE: </label>
+                <input type="number" id="mapWidthInput" value="20" style="width: 50px; background:#111; color:#0f0; border:1px solid #0f0; font-family:'DotGothic16'; text-align:center;">
+                <span>x</span>
+                <input type="number" id="mapHeightInput" value="20" style="width: 50px; background:#111; color:#0f0; border:1px solid #0f0; font-family:'DotGothic16'; text-align:center;">
+                <button onclick="applyMapSize()">変更</button>
+            </div>
+
+            <div class="canvas-container" style="overflow: visible;">
+                <canvas id="mapCanvas" width="421" height="421" style="overflow: visible;"></canvas>
+            </div>
+
+            <div style="margin-top:10px; display:flex; gap:5px;">
+                <button onclick="exportJSON()">JSON出力</button>
+                <button onclick="importJSON()">JSON読込</button>
+                <button onclick="saveAsImage()">PNG保存</button>
+                <button onclick="fullReset()" style="color:#f00; border-color:#f00;">全消去</button>
+            </div>
+            <textarea id="jsonArea" placeholder="JSON DATA..."></textarea>
+        </div>
+
+        <div class="help-panel">
+            <h3>[ 操作ガイド ]</h3>
+            <strong>■ 移動 (WASD+QE)</strong><br>
+            <span class="key">W</span> <span class="key">S</span> 前後 / <span class="key">Q</span> <span class="key">E</span> 平行<br>
+            <span class="key">A</span> <span class="key">D</span> 旋回 / <span class="key">左Click</span> ジャンプ移動<br>
+            <br>
+            <strong>■ 壁・扉 (正面に配置)</strong><br>
+            <span class="key">Num 8,4,5,6</span> 相対壁(ON/OFF)<br>
+            <span class="key">Num 0</span> 扉種類切替<br>
+            <small>(壁→扉→隠し扉→一方通行→消去)</small><br>
+            <br>
+            <strong>■ 特殊タイル (足元に配置)</strong><br>
+            <span class="key">↑↓←→</span> [上階][下階][罠][回転床]<br>
+            <span class="key">Num 7</span> ダークゾーン(ON/OFF)<br>
+            <span class="key">Num 9</span> 石壁(ON/OFF)<br>
+            <span class="key">M</span> 詳細メモ・メッセージ入力<br>
+            <br>
+            <strong>■ 特殊機能</strong><br>
+            <span class="key">Ctrl + Click</span> ワープ線(2点選ぶ)<br>
+            <span class="key">Shift + Click</span> 閉鎖空間の踏破色を一括ON/OFF<br>
+            <span class="key">Shift + ↑↓←→</span> マップ全体をずらす<br>
+            <span class="key">L</span> ワープ線を全消去<br>
+            <span class="key">C</span> 足元のメモ・踏破情報消去
+        </div>
+    </div>
+
+    <!-- 外部スクリプトの読み込み -->
+    <script src="script.js"></script>
+</body>
+</html>

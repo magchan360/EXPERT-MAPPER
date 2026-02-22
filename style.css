@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+body { background: #000; color: #0f0; display: flex; flex-direction: column; align-items: center; font-family: 'DotGothic16', sans-serif; margin: 0; padding: 20px; }
+
+.main-container {
+    display: flex;
+    gap: 10px; /* 20pxから10px（お好みで）に変更 */
+    align-items: flex-start;
+}
+
+/* 1. キャンバスコンテナの背景を黒にする（念のため） */
+.canvas-container { 
+    background: #000; /* #111 から #000 に変更 */
+    width: fit-content;    /* これを追加：幅をキャンバスに合わせる */
+    padding: 0;
+    line-height: 0;
+}
+
+canvas {
+    background: #000;
+    image-rendering: pixelated;
+    /* 十字カーソルを強制 */
+    cursor: crosshair;
+    /* 外枠（キャンバスの縁） */
+    border: 1px solid #002200;
+}
+
+.help-panel { border: 1px solid #0f0; padding: 15px; width: 280px; background: #050505; font-size: 0.85em; line-height: 1.6; }
+.help-panel h3 { margin-top: 0; border-bottom: 1px solid #0f0; padding-bottom: 5px; color: #fff; }
+
+/* 2. ステータス欄の幅をキャンバスに合わせる */
+.status { 
+    margin-bottom: 10px; 
+    border: 2px solid #0f0; 
+    padding: 10px; 
+    width: 421px; /* 400px から 421px に変更 */
+    box-sizing: border-box; /* 枠線を含めた計算にする */
+    background: #000; 
+}
+
+.highlight { color: #fff; text-shadow: 0 0 5px #fff; }
+.key { color: #ff0; border: 1px solid #ff0; padding: 0 4px; border-radius: 3px; font-size: 0.8em; }
+button { background: #000; color: #0f0; border: 1px solid #0f0; cursor: pointer; font-family: 'DotGothic16'; padding: 5px 10px; }
+
+/* 3. テキストエリアの幅をキャンバスに合わせる（これが最重要！） */
+textarea { 
+    width: 421px; /* 460px から 421px に変更 */
+    box-sizing: border-box; 
+    height: 40px; 
+    background: #111; 
+    color: #0a0; 
+    border: 1px solid #333; 
+    font-size: 10px; 
+    margin-top: 10px; 
+}
